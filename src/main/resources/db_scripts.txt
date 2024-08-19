@@ -1,0 +1,22 @@
+
+USE transactions_db;
+
+
+DROP TABLE IF EXISTS transactions;
+
+-- Create the new table
+CREATE TABLE transactions (
+    id INT AUTO_INCREMENT PRIMARY KEY,  
+    account_number VARCHAR(20) NOT NULL,  
+    trx_amount DECIMAL(15, 2) 
+    description VARCHAR(255) 
+    trx_date DATE NOT NULL,  
+    trx_time TIME NOT NULL, 
+    customer_id VARCHAR(20) NOT NULL  
+);
+
+-- Add an index to the account_number column for faster searches
+CREATE INDEX idx_account_number ON transactions (account_number);
+
+-- Add an index to the customer_id column for faster searches
+CREATE INDEX idx_customer_id ON transactions (customer_id);
